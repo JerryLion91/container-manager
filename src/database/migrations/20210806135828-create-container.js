@@ -4,15 +4,20 @@ const {
   container_types,
   container_status,
   container_categories,
-} = require('../validations');
+} = require('../enum_arrays');
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.createTable('containers', {
+      id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+      },
       container_id: {
         type: Sequelize.STRING(11),
-        allowNull: false,
         primaryKey: true,
+        allowNull: false,
         unique: true,
       },
       client: {

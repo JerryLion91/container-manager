@@ -1,14 +1,14 @@
 'use strict';
 
-const { operation_types, operation_procedures } = require('../validations');
+const { operation_types, operation_procedures } = require('../enum_arrays');
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.createTable('operations', {
       id: {
         type: Sequelize.UUID,
-        allowNull: false,
         primaryKey: true,
+        allowNull: false,
         defaultValue: Sequelize.UUIDV4,
       },
       type: {
