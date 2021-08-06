@@ -2,7 +2,7 @@ import Sequelize, { Model } from 'sequelize';
 import {
   operation_types,
   operation_procedures,
-} from '../../database/validations';
+} from '../../database/enum_arrays';
 
 class Operation extends Model {
   static init(sequelize) {

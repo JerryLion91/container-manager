@@ -3,7 +3,7 @@ import {
   container_types,
   container_status,
   container_categories,
-} from '../../database/validations';
+} from '../../database/enum_arrays';
 
 class Container extends Model {
   static init(sequelize) {
