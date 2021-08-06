@@ -43,6 +43,7 @@ Project made for admin the containers logistics in a port enviroment.
 | Status | Return    | Description                 |
 | :----- | :-------- | :-------------------------- |
 | `200`  | `object`  | Return the container record |
+| `400`  | `message` | Container number not valid  |
 | `400`  | `message` | Container not found         |
 
 #### Get container records
@@ -51,11 +52,12 @@ Project made for admin the containers logistics in a port enviroment.
   GET /api/containers/
 ```
 
-| Paramns    | Type     | Description                                           |
+| Query      | Type     | Description                                           |
 | :--------- | :------- | :---------------------------------------------------- |
-| `take`     | `string` | Number of records requested. Default = 20             |
-| `skip`     | `string` | Number of records skiped. Default = 0                 |
+| `take`     | `number` | Number of records requested. Default = 20             |
+| `skip`     | `number` | Number of records skiped. Default = 0                 |
 | `client`   | `string` | Client identifier to filter containers by client      |
+| `type`     | `enum`   | '20' or '40'                                          |
 | `status`   | `enum`   | 'FULL' or 'EMPTY' to filter containers by status      |
 | `category` | `enum`   | 'IMPORT' or 'EXPORT' to filter containers by categoty |
 
@@ -114,7 +116,7 @@ Project made for admin the containers logistics in a port enviroment.
 
 | Status | Return    | Description              |
 | :----- | :-------- | :----------------------- |
-| `200`  | `message` | Container record deleted |
+| `204`  | ` `       | Container record deleted |
 | `400`  | `message` | Container not found      |
 
 ### Operations
