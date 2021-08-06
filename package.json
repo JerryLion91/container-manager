@@ -1,0 +1,32 @@
+{
+  "name": "containers-manager",
+  "version": "1.0.0",
+  "description": "Projeto desenvolvido para processo seletivo T2S",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JerryLion91/container-manager.git"
+  },
+  "keywords": [
+    "[container",
+    "port",
+    "logistics]"
+  ],
+  "author": "Jeremias Leao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JerryLion91/container-manager/issues"
+  },
+  "homepage": "https://github.com/JerryLion91/container-manager#readme",
+  "dependencies": {
+    "yup": "^0.32.9"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12",
+    "sucrase": "^3.20.0"
+  }
+}
