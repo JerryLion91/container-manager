@@ -1,3 +1,7 @@
+// even preloadin dotenv in the script,
+// if not declared here CLI commands not work
+require('dotenv').config();
+
 module.exports = {
   dialect: 'postgres',
   host: process.env.DB_HOST,

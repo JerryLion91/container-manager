@@ -126,8 +126,8 @@ Project made for admin the containers logistics in a port enviroment.
 
 | Body           | Type     | Description                                                 |
 | :------------- | :------- | :---------------------------------------------------------- |
-| `operation`    | `enum`   | **Required**. Operation type: see below possible operations |
-| `time_type`    | `enum`   | **Required**. 'START' or 'END'                              |
+| `type`         | `enum`   | **Required**. Operation type: see below possible operations |
+| `procedure`    | `enum`   | **Required**. 'START' or 'END'                              |
 | `container_id` | `string` | **Required**. Container Number: (Ex. 'TEST1234567')         |
 | `date`         | `string` | **Required**. Date string: 'YYYY-MM-DDTHH:mm:ss'            |
 
