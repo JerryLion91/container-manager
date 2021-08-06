@@ -165,7 +165,7 @@ Possible operations: \['BOARDING', 'LANDING', 'GATE_IN', 'GATE_OUT', 'STACK_POSI
 
 | Paramns        | Type     | Description                                        |
 | :------------- | :------- | :------------------------------------------------- |
-| `operation`    | `string` | Operation to filter operations                     |
+| `type`         | `string` | Operation to filter operations                     |
 | `container_id` | `string` | Container Number to filter operations by container |
 | `client`       | `string` | Client identifier to filter containers by client   |
 
@@ -199,7 +199,7 @@ Possible operations: \['BOARDING', 'LANDING', 'GATE_IN', 'GATE_OUT', 'STACK_POSI
 | `type`         | `enum`   | Operation: see below possible operations |
 | `procedure`    | `enum`   | 'START' or 'END'                         |
 | `container_id` | `string` | Container Number: (Ex. 'TEST1234567')    |
-| `time`         | `string` | Date string: 'YYYY-MM-DDTHH:mm:ss'       |
+| `date`         | `string` | Date string: 'YYYY-MM-DDTHH:mm:ss'       |
 
 ##### _Response_
 
