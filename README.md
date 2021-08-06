@@ -54,8 +54,6 @@ Project made for admin the containers logistics in a port enviroment.
 
 | Query      | Type     | Description                                           |
 | :--------- | :------- | :---------------------------------------------------- |
-| `take`     | `number` | Number of records requested. Default = 20             |
-| `skip`     | `number` | Number of records skiped. Default = 0                 |
 | `client`   | `string` | Client identifier to filter containers by client      |
 | `type`     | `enum`   | '20' or '40'                                          |
 | `status`   | `enum`   | 'FULL' or 'EMPTY' to filter containers by status      |
@@ -71,8 +69,7 @@ Project made for admin the containers logistics in a port enviroment.
 
 ```
     {
-        items: [Container]!
-        total_items: Int
+        itemsList: [Container]!
     }
 
 ```
@@ -168,8 +165,6 @@ Possible operations: \['BOARDING', 'LANDING', 'GATE_IN', 'GATE_OUT', 'STACK_POSI
 
 | Paramns        | Type     | Description                                        |
 | :------------- | :------- | :------------------------------------------------- |
-| `take`         | `string` | Number of records requested. Default = 20          |
-| `skip`         | `string` | Number of records skiped. Default = 0              |
 | `operation`    | `string` | Operation to filter operations                     |
 | `container_id` | `string` | Container Number to filter operations by container |
 | `client`       | `string` | Client identifier to filter containers by client   |
@@ -184,8 +179,7 @@ Possible operations: \['BOARDING', 'LANDING', 'GATE_IN', 'GATE_OUT', 'STACK_POSI
 
 ```
     {
-        items: [Operation]!
-        total_items: Int
+        itemsList: [Operation]!
     }
 
 ```
@@ -202,8 +196,8 @@ Possible operations: \['BOARDING', 'LANDING', 'GATE_IN', 'GATE_OUT', 'STACK_POSI
 
 | Body           | Type     | Description                              |
 | :------------- | :------- | :--------------------------------------- |
-| `operation`    | `enum`   | Operation: see below possible operations |
-| `type`         | `enum`   | 'START' or 'END'                         |
+| `type`         | `enum`   | Operation: see below possible operations |
+| `procedure`    | `enum`   | 'START' or 'END'                         |
 | `container_id` | `string` | Container Number: (Ex. 'TEST1234567')    |
 | `time`         | `string` | Date string: 'YYYY-MM-DDTHH:mm:ss'       |
 
@@ -229,7 +223,7 @@ Possible operations: \['BOARDING', 'LANDING', 'GATE_IN', 'GATE_OUT', 'STACK_POSI
 
 | Status | Return    | Description              |
 | :----- | :-------- | :----------------------- |
-| `200`  | `message` | Operation record deleted |
+| `204`  | ` `       | Operation record deleted |
 | `400`  | `message` | Operation not found      |
 
 ## Tech Stack
