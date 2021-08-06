@@ -26,6 +26,7 @@ Project made for admin the containers logistics in a port enviroment.
 | :----- | :-------- | :--------------------------- |
 | `201`  | `object`  | Return the container created |
 | `400`  | `message` | Container not valid          |
+| `400`  | `message` | Container already created    |
 
 #### Get container record
 
@@ -33,7 +34,7 @@ Project made for admin the containers logistics in a port enviroment.
   GET /api/containers/:container_id
 ```
 
-| Query          | Type     | Description                                         |
+| Params         | Type     | Description                                         |
 | :------------- | :------- | :-------------------------------------------------- |
 | `container_id` | `string` | **Required**. Container Number: (Ex. 'TEST1234567') |
 
@@ -80,7 +81,7 @@ Project made for admin the containers logistics in a port enviroment.
   PUT /api/containers/:container_id
 ```
 
-| Query          | Type     | Description                                         |
+| Params         | Type     | Description                                         |
 | :------------- | :------- | :-------------------------------------------------- |
 | `container_id` | `string` | **Required**. Container Number: (Ex. 'TEST1234567') |
 
@@ -105,7 +106,7 @@ Project made for admin the containers logistics in a port enviroment.
   DELETE /api/containers/:container_id
 ```
 
-| Query          | Type     | Description                                         |
+| Params         | Type     | Description                                         |
 | :------------- | :------- | :-------------------------------------------------- |
 | `container_id` | `string` | **Required**. Container Number: (Ex. 'TEST1234567') |
 
@@ -146,7 +147,7 @@ Possible operations: \['BOARDING', 'LANDING', 'GATE_IN', 'GATE_OUT', 'STACK_POSI
   GET /api/operations/:operation_id
 ```
 
-| Query          | Type     | Description                |
+| Params         | Type     | Description                |
 | :------------- | :------- | :------------------------- |
 | `operation_id` | `string` | **Required**. Operation id |
 
@@ -193,7 +194,7 @@ Possible operations: \['BOARDING', 'LANDING', 'GATE_IN', 'GATE_OUT', 'STACK_POSI
   PUT /api/operations/:operation_id
 ```
 
-| Query          | Type     | Description                |
+| Params         | Type     | Description                |
 | :------------- | :------- | :------------------------- |
 | `operation_id` | `string` | **Required**. Operation id |
 
@@ -218,7 +219,7 @@ Possible operations: \['BOARDING', 'LANDING', 'GATE_IN', 'GATE_OUT', 'STACK_POSI
   DELETE /api/operations/:operation_id
 ```
 
-| Query          | Type     | Description                |
+| Params         | Type     | Description                |
 | :------------- | :------- | :------------------------- |
 | `operation_id` | `string` | **Required**. Operation id |
 
