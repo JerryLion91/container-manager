@@ -1,9 +1,6 @@
-
 # Containers Admin
 
-Project made for admin the containers logistics in a port enviroment. 
-
-
+Project made for admin the containers logistics in a port enviroment.
 
 ## API Reference
 
@@ -15,20 +12,20 @@ Project made for admin the containers logistics in a port enviroment.
   POST /api/containers
 ```
 
-| Body          | Type     | Description                                        |
-| :------------ | :------- | :------------------------------------------------- |
-| `client`      | `string` | **Required**. Client identifier                    |
-| `container_id`| `string` | **Required**. Container Number: (Ex. 'TEST1234567')|
-| `type`        | `enum`   | **Required**. '20' or '40'                         |
-| `status`      | `enum`   | **Required**. 'FULL' or 'EMPTY'                    |
-| `category`    | `enum`   | **Required**. 'IMPORT' or 'EXPORT'                 |
+| Body           | Type     | Description                                         |
+| :------------- | :------- | :-------------------------------------------------- |
+| `container_id` | `string` | **Required**. Container Number: (Ex. 'TEST1234567') |
+| `client`       | `string` | **Required**. Client identifier                     |
+| `type`         | `enum`   | **Required**. '20' or '40'                          |
+| `status`       | `enum`   | **Required**. 'FULL' or 'EMPTY'                     |
+| `category`     | `enum`   | **Required**. 'IMPORT' or 'EXPORT'                  |
 
-##### *Response*
-| Status | Return    | Description                       |
-| :----- | :-------- | :-------------------------------- |
-| `201`  | `object`  | Return the container created      |
-| `400`  | `message` | Container not valid               |
+##### _Response_
 
+| Status | Return    | Description                  |
+| :----- | :-------- | :--------------------------- |
+| `201`  | `object`  | Return the container created |
+| `400`  | `message` | Container not valid          |
 
 #### Get container record
 
@@ -36,15 +33,16 @@ Project made for admin the containers logistics in a port enviroment.
   GET /api/containers/:container_id
 ```
 
-| Query         | Type     | Description                                        |
-| :------------ | :------- | :------------------------------------------------- |
-| `container_id`| `string` | **Required**. Container Number: (Ex. 'TEST1234567')|
+| Query          | Type     | Description                                         |
+| :------------- | :------- | :-------------------------------------------------- |
+| `container_id` | `string` | **Required**. Container Number: (Ex. 'TEST1234567') |
 
-##### *Response*
-| Status | Return   | Description                           |
-| :----- | :------- | :------------------------------------ |
-| `200`  | `object` | Return the container record           |
-| `400`  | `message`| Container not found                   |
+##### _Response_
+
+| Status | Return    | Description                 |
+| :----- | :-------- | :-------------------------- |
+| `200`  | `object`  | Return the container record |
+| `400`  | `message` | Container not found         |
 
 #### Get container records
 
@@ -52,20 +50,22 @@ Project made for admin the containers logistics in a port enviroment.
   GET /api/containers/
 ```
 
-| Paramns   | Type     | Description                                           |
-| :-------- | :------- | :---------------------------------------------------- |
-| `take`    | `string` | Number of records requested. Default = 20             |
-| `skip`    | `string` | Number of records skiped. Default = 0                 |
-| `client`  | `string` | Client identifier to filter containers by client      |
-| `status`  | `enum`   | 'FULL' or 'EMPTY' to filter containers by status      |
-| `category`| `enum`   | 'IMPORT' or 'EXPORT' to filter containers by categoty |
+| Paramns    | Type     | Description                                           |
+| :--------- | :------- | :---------------------------------------------------- |
+| `take`     | `string` | Number of records requested. Default = 20             |
+| `skip`     | `string` | Number of records skiped. Default = 0                 |
+| `client`   | `string` | Client identifier to filter containers by client      |
+| `status`   | `enum`   | 'FULL' or 'EMPTY' to filter containers by status      |
+| `category` | `enum`   | 'IMPORT' or 'EXPORT' to filter containers by categoty |
 
-##### *Response*
-| Status | Return   | Description                                  |
-| :----- | :------- | :------------------------------------------- |
-| `200`  | `object` | Return the containers records. (see bellow)  |
+##### _Response_
 
-###### *response object*
+| Status | Return   | Description                                 |
+| :----- | :------- | :------------------------------------------ |
+| `200`  | `object` | Return the containers records. (see bellow) |
+
+###### _response object_
+
 ```
     {
         items: [Container]!
@@ -80,23 +80,24 @@ Project made for admin the containers logistics in a port enviroment.
   PUT /api/containers/:container_id
 ```
 
-| Query          | Type     | Description                                        |
-| :------------- | :------- | :------------------------------------------------- |
-| `container_id` | `string` | **Required**. Container Number: (Ex. 'TEST1234567')|
+| Query          | Type     | Description                                         |
+| :------------- | :------- | :-------------------------------------------------- |
+| `container_id` | `string` | **Required**. Container Number: (Ex. 'TEST1234567') |
 
-| Body      | Type     | Description                        |
-| :-------- | :------- | :--------------------------------- |
-| `client`  | `string` | Client identifier                  |
-| `type`    | `enum`   | '20' or '40'                       |
-| `status`  | `enum`   | 'FULL' or 'EMPTY'                  |
-| `category`| `enum`   | 'IMPORT' or 'EXPORT'               |
+| Body       | Type     | Description          |
+| :--------- | :------- | :------------------- |
+| `client`   | `string` | Client identifier    |
+| `type`     | `enum`   | '20' or '40'         |
+| `status`   | `enum`   | 'FULL' or 'EMPTY'    |
+| `category` | `enum`   | 'IMPORT' or 'EXPORT' |
 
-##### *Response*
-| Status | Return   | Description                           |
-| :----- | :------- | :-----------------------------------  |
-| `200`  | `object` | Return the container record           |
-| `400`  | `message`| Update not valid                      |
-| `400`  | `message`| Container not found                   |
+##### _Response_
+
+| Status | Return    | Description                 |
+| :----- | :-------- | :-------------------------- |
+| `200`  | `object`  | Return the container record |
+| `400`  | `message` | Update not valid            |
+| `400`  | `message` | Container not found         |
 
 #### Delete container record
 
@@ -104,17 +105,16 @@ Project made for admin the containers logistics in a port enviroment.
   DELETE /api/containers/:container_id
 ```
 
-| Query         | Type     | Description                                        |
-| :------------ | :------- | :------------------------------------------------- |
-| `container_id`| `string` | **Required**. Container Number: (Ex. 'TEST1234567')|
+| Query          | Type     | Description                                         |
+| :------------- | :------- | :-------------------------------------------------- |
+| `container_id` | `string` | **Required**. Container Number: (Ex. 'TEST1234567') |
 
-##### *Response*
-| Status | Return   | Description                       |
-| :----- | :------- | :-------------------------------- |
-| `200`  | `message`| Container record deleted          |
-| `400`  | `message`| Container not found               |
+##### _Response_
 
-
+| Status | Return    | Description              |
+| :----- | :-------- | :----------------------- |
+| `200`  | `message` | Container record deleted |
+| `400`  | `message` | Container not found      |
 
 ### Operations
 
@@ -124,21 +124,21 @@ Project made for admin the containers logistics in a port enviroment.
   POST /api/operations
 ```
 
-| Body          | Type     | Description                                                    |
-| :------------ | :------- | :------------------------------------------------------------- |
-| `operation`   | `enum`   | **Required**. Operation type: see below possible operations    |
-| `time_type`   | `enum`   | **Required**. 'START' or 'END'                                 |
-| `container_id`| `string` | **Required**. Container Number: (Ex. 'TEST1234567')            |
-| `date`        | `string` | **Required**. Date string: 'YYYY-MM-DDTHH:mm:ss'               |
+| Body           | Type     | Description                                                 |
+| :------------- | :------- | :---------------------------------------------------------- |
+| `operation`    | `enum`   | **Required**. Operation type: see below possible operations |
+| `time_type`    | `enum`   | **Required**. 'START' or 'END'                              |
+| `container_id` | `string` | **Required**. Container Number: (Ex. 'TEST1234567')         |
+| `date`         | `string` | **Required**. Date string: 'YYYY-MM-DDTHH:mm:ss'            |
 
 Possible operations: \['BOARDING', 'LANDING', 'GATE_IN', 'GATE_OUT', 'STACK_POSITIONING', 'WEIGHING', 'SCANNER'\]
 
-##### *Response*
-| Status | Return    | Description                       |
-| :----- | :-------- | :-------------------------------- |
-| `201`  | `id`      | Return the operation id           |
-| `400`  | `message` | Operation not valid               |
+##### _Response_
 
+| Status | Return    | Description             |
+| :----- | :-------- | :---------------------- |
+| `201`  | `id`      | Return the operation id |
+| `400`  | `message` | Operation not valid     |
 
 #### Get operation record
 
@@ -146,15 +146,16 @@ Possible operations: \['BOARDING', 'LANDING', 'GATE_IN', 'GATE_OUT', 'STACK_POSI
   GET /api/operations/:operation_id
 ```
 
-| Query         | Type     | Description                    |
-| :------------ | :------- | :----------------------------- |
-| `operation_id`| `string` | **Required**. Operation id     |
+| Query          | Type     | Description                |
+| :------------- | :------- | :------------------------- |
+| `operation_id` | `string` | **Required**. Operation id |
 
-##### *Response*
-| Status | Return   | Description                           |
-| :----- | :------- | :------------------------------------ |
-| `200`  | `object` | Return the operation record           |
-| `400`  | `message`| Container not found                   |
+##### _Response_
+
+| Status | Return    | Description                 |
+| :----- | :-------- | :-------------------------- |
+| `200`  | `object`  | Return the operation record |
+| `400`  | `message` | Container not found         |
 
 #### Get operatios records
 
@@ -162,20 +163,22 @@ Possible operations: \['BOARDING', 'LANDING', 'GATE_IN', 'GATE_OUT', 'STACK_POSI
   GET /api/operations/
 ```
 
-| Paramns        | Type     | Description                                           |
-| :------------- | :------- | :---------------------------------------------------- |
-| `take`         | `string` | Number of records requested. Default = 20             |
-| `skip`         | `string` | Number of records skiped. Default = 0                 |
-| `operation`    | `string` | Operation to filter operations                        |
-| `container_id` | `string` | Container Number to filter operations by container    |
-| `client`       | `string` | Client identifier to filter containers by client      |
+| Paramns        | Type     | Description                                        |
+| :------------- | :------- | :------------------------------------------------- |
+| `take`         | `string` | Number of records requested. Default = 20          |
+| `skip`         | `string` | Number of records skiped. Default = 0              |
+| `operation`    | `string` | Operation to filter operations                     |
+| `container_id` | `string` | Container Number to filter operations by container |
+| `client`       | `string` | Client identifier to filter containers by client   |
 
-##### *Response*
-| Status | Return   | Description                                  |
-| :----- | :------- | :------------------------------------------- |
-| `200`  | `object` | Return the operations records. (see bellow)  |
+##### _Response_
 
-###### *response object*
+| Status | Return   | Description                                 |
+| :----- | :------- | :------------------------------------------ |
+| `200`  | `object` | Return the operations records. (see bellow) |
+
+###### _response object_
+
 ```
     {
         items: [Operation]!
@@ -190,23 +193,24 @@ Possible operations: \['BOARDING', 'LANDING', 'GATE_IN', 'GATE_OUT', 'STACK_POSI
   PUT /api/operations/:operation_id
 ```
 
-| Query         | Type     | Description                    |
-| :------------ | :------- | :----------------------------- |
-| `operation_id`| `string` | **Required**. Operation id     |
+| Query          | Type     | Description                |
+| :------------- | :------- | :------------------------- |
+| `operation_id` | `string` | **Required**. Operation id |
 
-| Body          | Type     | Description                                      |
-| :------------ | :------- | :----------------------------------------------- |
-| `operation`   | `enum`   | Operation: see below possible operations         |
-| `type`        | `enum`   | 'START' or 'END'                                 |
-| `container_id`| `string` | Container Number: (Ex. 'TEST1234567')            |
-| `time`        | `string` | Date string: 'YYYY-MM-DDTHH:mm:ss'               |
+| Body           | Type     | Description                              |
+| :------------- | :------- | :--------------------------------------- |
+| `operation`    | `enum`   | Operation: see below possible operations |
+| `type`         | `enum`   | 'START' or 'END'                         |
+| `container_id` | `string` | Container Number: (Ex. 'TEST1234567')    |
+| `time`         | `string` | Date string: 'YYYY-MM-DDTHH:mm:ss'       |
 
-##### *Response*
-| Status | Return   | Description                           |
-| :----- | :------- | :-----------------------------------  |
-| `200`  | `object` | Return the operation record           |
-| `400`  | `message`| Update not valid                      |
-| `400`  | `message`| Container not found                   |
+##### _Response_
+
+| Status | Return    | Description                 |
+| :----- | :-------- | :-------------------------- |
+| `200`  | `object`  | Return the operation record |
+| `400`  | `message` | Update not valid            |
+| `400`  | `message` | Container not found         |
 
 #### Delete operation record
 
@@ -214,16 +218,16 @@ Possible operations: \['BOARDING', 'LANDING', 'GATE_IN', 'GATE_OUT', 'STACK_POSI
   DELETE /api/operations/:operation_id
 ```
 
-| Query         | Type     | Description                    |
-| :------------ | :------- | :----------------------------- |
-| `operation_id`| `string` | **Required**. Operation id     |
+| Query          | Type     | Description                |
+| :------------- | :------- | :------------------------- |
+| `operation_id` | `string` | **Required**. Operation id |
 
-##### *Response*
-| Status | Return   | Description                           |
-| :----- | :------- | :------------------------------------ |
-| `200`  | `message`| Operation record deleted              |
-| `400`  | `message`| Operation not found                   |
+##### _Response_
 
+| Status | Return    | Description              |
+| :----- | :-------- | :----------------------- |
+| `200`  | `message` | Operation record deleted |
+| `400`  | `message` | Operation not found      |
 
 ## Tech Stack
 
@@ -231,7 +235,6 @@ Possible operations: \['BOARDING', 'LANDING', 'GATE_IN', 'GATE_OUT', 'STACK_POSI
 
 **Server:** REST with: Node, Express
 
-  
 ## License
 
 [ISC License](https://choosealicense.com/licenses/isc/)
