@@ -1,15 +1,19 @@
-'use strict';
+('use strict');
 
 const { operation_types, operation_procedures } = require('../enum_arrays');
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.createTable('operations', {
+      // id: {
+      //   allowNull: false,
+      //   primaryKey: true,
+      //   type: Sequelize.UUID,
+      // },
       id: {
-        type: Sequelize.UUID,
-        primaryKey: true,
+        type: Sequelize.INTEGER,
         allowNull: false,
-        defaultValue: Sequelize.UUIDV4,
+        autoIncrement: true,
       },
       type: {
         type: Sequelize.ENUM(operation_types),
@@ -29,6 +33,10 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
         allowNull: true,
+      },
+      client: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       created_at: {
         type: Sequelize.DATE,
