@@ -1,10 +1,16 @@
 'use strict';
 
+const {
+  container_types,
+  container_status,
+  container_categories,
+} = require('../validations');
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.createTable('containers', {
       container_id: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(11),
         allowNull: false,
         primaryKey: true,
         unique: true,
@@ -14,16 +20,15 @@ module.exports = {
         allowNull: false,
       },
       type: {
-        type: Sequelize.STRING,
+        type: Sequelize.ENUM(container_types),
         allowNull: false,
       },
       status: {
-        type: Sequelize.STRING,
+        type: Sequelize.ENUM(container_status),
         allowNull: false,
       },
       category: {
-        type: Sequelize.STRING,
-        defaultValue: false,
+        type: Sequelize.ENUM(container_categories),
         allowNull: false,
       },
       created_at: {
@@ -37,7 +42,7 @@ module.exports = {
     });
   },
 
-  down: async (queryInterface, Sequelize) => {
+  down: async (queryInterface) => {
     return queryInterface.dropTable('containers');
   },
 };
