@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon -r dotenv/config src/main.js"
+    "dev": "nodemon src/main.js"
   },
   "repository": {
     "type": "git",
