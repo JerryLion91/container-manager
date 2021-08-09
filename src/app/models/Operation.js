@@ -13,6 +13,7 @@ class Operation extends Model {
         procedure: Sequelize.ENUM(operation_procedures),
         container_id: Sequelize.STRING(11),
         client: Sequelize.STRING,
+        category: Sequelize.STRING,
 
         date: Sequelize.DATE,
       },
@@ -21,12 +22,13 @@ class Operation extends Model {
       }
     );
     Operation.beforeCreate(async (operation) => {
-      const { client } = await Container.findOne({
+      const { client, category } = await Container.findOne({
         where: {
           container_id: operation.container_id,
         },
       });
       operation.client = client;
+      operation.category = category;
     });
     return this;
   }

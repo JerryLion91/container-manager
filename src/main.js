@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'path';
+import cors from 'cors';
 import routes from './routes';
 import './database/index';
 
@@ -11,6 +12,11 @@ class App {
   }
   middlewares() {
     this.server.use(express.json());
+    this.server.use(
+      cors({
+        origin: 'http://localhost:3000',
+      })
+    );
     this.server.use(
       express.static(path.resolve(__dirname, '..', 'client', 'build'))
     );
