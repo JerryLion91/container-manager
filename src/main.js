@@ -2,6 +2,8 @@ import express from 'express';
 import path from 'path';
 import cors from 'cors';
 import routes from './routes';
+import winston from 'winston';
+import expressWinston from 'express-winston'
 import './database/index';
 
 class App {
@@ -10,6 +12,7 @@ class App {
     this.middlewares();
     this.routes();
   }
+
   middlewares() {
     this.server.use(express.json());
     this.server.use(
@@ -20,7 +23,19 @@ class App {
     this.server.use(
       express.static(path.resolve(__dirname, '..', 'client', 'build'))
     );
+    this.server.use(expressWinston.logger({
+      transports: [
+        new winston.transports.Console()
+      ],
+      format: winston.format.combine(
+        //winston.format.colorize(),
+        winston.format.json()
+      ),
+      meta: false,
+      msg: "HTTP {{req.method}} {{req.url}}",
+    }));
   }
+
   routes() {
     this.server.use('/api', routes);
   }

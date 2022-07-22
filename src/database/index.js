@@ -10,15 +10,20 @@ const models = [Container, Operation];
 class Database {
   constructor() {
     this.init();
-    this.logInfo();
+    this.checkConnection();
   }
   init() {
     this.connection = new Sequelize(databaseConfig);
     models.map((model) => model.init(this.connection));
   }
 
-  logInfo() {
-    console.log('Connected with database');
+  async checkConnection() {
+    try {
+      await this.connection.authenticate();
+      console.log('Connection has been established successfully.');
+    } catch (error) {
+      console.error('Unable to connect to the database:', error);
+    }
   }
 }
 
