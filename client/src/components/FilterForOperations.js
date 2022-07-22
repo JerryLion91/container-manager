@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function FilterForOperations({ operations, filter, setFilter }) {
+export function FilterForOperations({ operations, filter, setFilter }) {
   const [clients, setClients] = React.useState([]);
   React.useEffect(() => {
     operations &&

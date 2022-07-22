@@ -1,4 +1,4 @@
-import http from './http-common';
+import { http } from '../http'
 
 const create = (data) => {
   return http.post('/containers', data);
@@ -22,7 +22,7 @@ const remove = (id) => {
   return http.delete(`/containers/${id}`);
 };
 
-const service = {
+export const containersService = {
   create,
   get,
   index,
@@ -30,4 +30,3 @@ const service = {
   remove,
 };
 
-export default service;

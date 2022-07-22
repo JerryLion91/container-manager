@@ -1,12 +1,32 @@
 import React from 'react';
+import { OperationModal } from '.';
 
-export default function OperationsList({
+export function OperationsList({
   operations,
   handleDelete,
-  setShowOperationPopup,
+  getOperations,
 }) {
+
+  const [showOperationPopup, setShowOperationPopup] = React.useState({
+    operation: undefined,
+    show: false,
+  });
+
+  const toggleOperationPopup = () => {
+    setShowOperationPopup({
+      operation: undefined,
+      show: !showOperationPopup.show,
+    });
+    getOperations();
+  };
+
   return (
     <div className="col s12">
+      <OperationModal
+        showPopup={showOperationPopup.show}
+        operation={showOperationPopup.operation}
+        togglePopup={toggleOperationPopup}
+      />
       {operations
         .sort((a, b) => a.category.localeCompare(b.category))
         .sort((a, b) => a.type.localeCompare(b.type))
@@ -45,7 +65,6 @@ export default function OperationsList({
 
 function formatDate(dateString) {
   const date = new Date(dateString);
-  return `${date.getDate()}/${
-    date.getMonth() + 1
-  }/${date.getFullYear()} | ${date.getHours()}:${date.getMinutes()}`;
+  return `${date.getDate()}/${date.getMonth() + 1
+    }/${date.getFullYear()} | ${date.getHours()}:${date.getMinutes()}`;
 }

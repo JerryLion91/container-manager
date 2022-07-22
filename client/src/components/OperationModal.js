@@ -1,9 +1,9 @@
 import React from 'react';
 import { Modal } from 'react-responsive-modal';
-import operationsService from '../service/operationsService';
+import { operationsService } from '../services';
 import M from 'materialize-css';
 
-export default function ContainerModal({ operation, showPopup, togglePopup }) {
+export function OperationModal({ operation, showPopup, togglePopup }) {
   const initialvalue = () => {
     const todayISOString = new Date().toISOString();
     const todayDate = todayISOString.split('T')[0];

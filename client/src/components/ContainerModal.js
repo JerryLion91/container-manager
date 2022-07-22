@@ -1,9 +1,9 @@
 import React from 'react';
 import { Modal } from 'react-responsive-modal';
-import containersService from '../service/containersService';
+import { containersService } from '../services';
 import M from 'materialize-css';
 
-export default function ContainerModal({
+export function ContainerModal({
   container = {
     container_id: '',
     client: '',
