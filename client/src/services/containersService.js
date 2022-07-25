@@ -10,7 +10,7 @@ const get = (id) => {
 
 const index = (client, type, status, category) => {
   return http.get(
-    `/containers?client=${client}&type=${type}&status=${status}&category=${category}`
+    `/containers` //?client=${client || ""}&type=${type || ""}&status=${status || ""}&category=${category || ""}
   );
 };
 

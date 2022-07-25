@@ -1,5 +1,6 @@
 import React from 'react';
 import { OperationModal } from '.';
+import { formatDate } from '../utils';
 
 export function OperationsList({
   operations,
@@ -19,6 +20,13 @@ export function OperationsList({
     });
     getOperations();
   };
+
+  const totalExport = operations.reduce((acc, op) => acc + (op.category === 'EXPORT' ? 1 : 0), 0);
+  const totalImport = operations.reduce((acc, op) => acc + (op.category === 'IMPORT' ? 1 : 0), 0);
+
+  const uniquesContainers = operations
+    .map(({ container_id }) => container_id)
+    .filter((value, index, self) => self.indexOf(value) === index).length;
 
   return (
     <div className="col s12">
@@ -59,12 +67,12 @@ export function OperationsList({
             </div>
           );
         })}
+      <hr />
+      <div className="row">
+        <div className="col s4">Containers: {uniquesContainers}</div>
+        <div className="col s4">Total exportacao: {totalExport}</div>
+        <div className="col s4">Total importacao: {totalImport}</div>
+      </div>
     </div>
   );
-}
-
-function formatDate(dateString) {
-  const date = new Date(dateString);
-  return `${date.getDate()}/${date.getMonth() + 1
-    }/${date.getFullYear()} | ${date.getHours()}:${date.getMinutes()}`;
 }
