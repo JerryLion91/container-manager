@@ -1,4 +1,4 @@
-('use strict');
+"use strict";('use strict');
 
 const { operation_types, operation_procedures } = require('../enum_arrays');
 

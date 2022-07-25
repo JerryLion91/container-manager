@@ -1,15 +1,15 @@
-import Operation from '../models/Operation';
-import {
-  operation_types,
-  operation_procedures,
-} from '../../database/enum_arrays';
-import * as Yup from 'yup';
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _Operation = require('../models/Operation'); var _Operation2 = _interopRequireDefault(_Operation);
+
+
+
+var _enum_arrays = require('../../database/enum_arrays');
+var _yup = require('yup'); var Yup = _interopRequireWildcard(_yup);
 
 class OperationController {
   async store(req, res) {
     const schema = Yup.object().shape({
-      type: Yup.string().oneOf(operation_types).required(),
-      procedure: Yup.string().oneOf(operation_procedures).required(),
+      type: Yup.string().oneOf(_enum_arrays.operation_types).required(),
+      procedure: Yup.string().oneOf(_enum_arrays.operation_procedures).required(),
       container_id: Yup.string()
         .matches(/^[A-Z]{4}\d{7}$/)
         .required(),
@@ -22,7 +22,7 @@ class OperationController {
     }
     try {
       const { type, procedure, container_id, client, date } =
-        await Operation.create(req.body);
+        await _Operation2.default.create(req.body);
       return res
         .status(201)
         .send({ type, procedure, container_id, client, date });
@@ -33,7 +33,7 @@ class OperationController {
   }
   async get(req, res) {
     const { operation_id } = req.params;
-    const operationRef = await Operation.findOne({
+    const operationRef = await _Operation2.default.findOne({
       where: {
         id: operation_id,
       },
@@ -53,12 +53,12 @@ class OperationController {
     if (type) where = { ...where, type };
     if (client) where = { ...where, client };
 
-    const operationsList = await Operation.findAll({ where });
+    const operationsList = await _Operation2.default.findAll({ where });
     return res.status(200).send(operationsList);
   }
   async update(req, res) {
     const { operation_id } = req.params;
-    const operationRef = await Operation.findOne({
+    const operationRef = await _Operation2.default.findOne({
       where: {
         id: operation_id,
       },
@@ -67,8 +67,8 @@ class OperationController {
       return res.status(400).json({ error: 'Operation not found' });
     }
     const schema = Yup.object().shape({
-      type: Yup.string().oneOf(operation_types),
-      procedure: Yup.string().oneOf(operation_procedures),
+      type: Yup.string().oneOf(_enum_arrays.operation_types),
+      procedure: Yup.string().oneOf(_enum_arrays.operation_procedures),
       container_id: Yup.string().matches(/^[A-Z]{4}\d{7}$/),
       date: Yup.date(),
     });
@@ -95,7 +95,7 @@ class OperationController {
   }
   async delete(req, res) {
     const { operation_id } = req.params;
-    const operationRef = await Operation.destroy({
+    const operationRef = await _Operation2.default.destroy({
       where: {
         id: operation_id,
       },
@@ -107,4 +107,4 @@ class OperationController {
   }
 }
 
-export default new OperationController();
+exports. default = new OperationController();

@@ -1,27 +1,34 @@
-import axios from 'axios';
+import React from 'react';
+import 'react-responsive-modal/styles.css';
+import { Routes, Route, Link, Outlet } from "react-router-dom";
+import M from 'materialize-css';
+
+import { Header, } from './components';
+import { Containers, Operations } from './pages';
 
 function App() {
-  axios
-    .get('http://localhost:8000/api/operations?type=GATE_IN&client=Amazon')
-    .then((data) => {
-      console.log(data);
-    });
-
+  React.useEffect(() => M.AutoInit(), []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route path="containers" element={<Containers />} />
+        <Route path="operations" element={<Operations />} />
+      </Route>
+    </Routes>
+  );
+}
+
+function Layout() {
+  return (
+    <div className="container center">
+      <Header />
+      <nav>
+        <Link to="containers">Containers</Link> | {" "}
+        <Link to="operations">Movimentações</Link>
+      </nav>
+      <div className="content">
+        <Outlet />
+      </div>
     </div>
   );
 }
